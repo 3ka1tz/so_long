@@ -6,7 +6,7 @@
 /*   By: elopez-u <elopez-u@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:46:51 by elopez-u          #+#    #+#             */
-/*   Updated: 2025/02/13 12:25:19 by elopez-u         ###   ########.fr       */
+/*   Updated: 2025/10/21 12:23:43 by elopez-u         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	is_map_rectangular(t_data *game)
 	i = 1;
 	while (game->array[i])
 	{
-		if (ft_strlen(game->array[i]) != game->width)
+		if (ft_strlen(game->array[i]) != (size_t)game->width)
 			return (write(2, "Error!\nMap must be rectangular.\n", 33), 0);
 		i++;
 	}
