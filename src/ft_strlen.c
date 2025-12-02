@@ -1,11 +1,23 @@
-#include <stddef.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elopez-u <elopez-u@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/04 11:18:24 by elopez-u          #+#    #+#             */
+/*   Updated: 2025/02/12 12:45:36 by elopez-u         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-size_t	ft_strlen(const char *s)
+#include "../include/so_long.h"
+
+int	ft_strlen(const char *s)
 {
-	size_t	len;
+	int	i;
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

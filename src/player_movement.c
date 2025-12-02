@@ -6,11 +6,9 @@
 /*   By: elopez-u <elopez-u@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:47:44 by elopez-u          #+#    #+#             */
-/*   Updated: 2025/10/21 11:25:08 by elopez-u         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:36:43 by elopez-u         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <X11/keysym.h>
 
 #include "../include/so_long.h"
 
@@ -58,21 +56,21 @@ static void	move_player(t_data *game, int y, int x)
 
 int	keys(int keycode, t_data *game)
 {
-	if (keycode == XK_Escape)
+	if (keycode == ESC)
 	{
 		write(1, "Successfully exited after pressing ESC.\n", 41);
 		exit_game(game);
 	}
-	if ((keycode == XK_w || keycode == XK_Up)
+	if ((keycode == W || keycode == UP)
 		&& game->array_playable[game->player_y - 1][game->player_x] != '1')
 		move_player(game, game->player_y - 1, game->player_x);
-	if ((keycode == XK_a || keycode == XK_Left)
+	if ((keycode == A || keycode == LEFT)
 		&& game->array_playable[game->player_y][game->player_x - 1] != '1')
 		move_player(game, game->player_y, game->player_x - 1);
-	if ((keycode == XK_s || keycode == XK_Down)
+	if ((keycode == S || keycode == DOWN)
 		&& game->array_playable[game->player_y + 1][game->player_x] != '1')
 		move_player(game, game->player_y + 1, game->player_x);
-	if ((keycode == XK_d || keycode == XK_Right)
+	if ((keycode == D || keycode == RIGHT)
 		&& game->array_playable[game->player_y][game->player_x + 1] != '1')
 		move_player(game, game->player_y, game->player_x + 1);
 	return (0);

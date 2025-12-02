@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elopez-u <elopez-u@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/15 11:26:09 by elopez-u          #+#    #+#             */
+/*   Updated: 2025/02/13 12:25:23 by elopez-u         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 static int	count_bytes_from_fd(int fd)
@@ -50,7 +62,9 @@ int	main(int argc, char **argv)
 {
 	t_data	game;
 
-	validate_input(argc, argv);
+	if (argc != 2)
+		return (write (2, "Error!\nInvalid number of arguments.\n", 37), -1);
+	validate_map_file(argv);
 	game.fd = open(argv[1], O_RDONLY);
 	if (game.fd == -1)
 		return (write(2, "Error!\nUnable to open file.\n", 29), -1);
