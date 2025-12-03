@@ -87,4 +87,6 @@ int		keys(int keycode, t_data *game);
 void	free_game_data(t_data *game);
 int		exit_game(t_data *game);
 
+void	validate_arguments(int argc, char **argv);
+
 #endif
