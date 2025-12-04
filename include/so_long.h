@@ -89,4 +89,9 @@ int		exit_game(t_data *game);
 
 void	validate_arguments(int argc, char **argv);
 
+void ft_putchar_fd(char c, int fd);
+void ft_putstr_fd(char *s, int fd);
+void ft_putendl_fd(char *s, int fd);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
 #endif
