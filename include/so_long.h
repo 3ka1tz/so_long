@@ -34,11 +34,9 @@ typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
-	int		string_length;
 	char	*string;
 	char	**array;
 	char	**array_playable;
-	int		fd;
 	int		c_count;
 	int		e_count;
 	int		p_count;
@@ -88,6 +86,7 @@ void	free_game_data(t_data *game);
 int		exit_game(t_data *game);
 
 void	validate_arguments(int argc, char **argv);
+void	read_map_file(t_data *game, char *file);
 
 void ft_putchar_fd(char c, int fd);
 void ft_putstr_fd(char *s, int fd);
