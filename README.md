@@ -31,5 +31,5 @@ For example, you could use `maps/valid/labyrinth.ber` map file.
 
 ## Resources
 
-https://github.com/42paris/minilibx-linux
+https://github.com/42paris/minilibx-linux  
 https://harm-smits.github.io/42docs/libs/minilibx
