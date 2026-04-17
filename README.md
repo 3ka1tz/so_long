@@ -6,6 +6,10 @@ This project has been created as part of the 42 curriculum by [elopez-u](https:/
 
 This project is a small 2D game. Its purpose is to have you work with textures, sprites, and other basic gameplay elements.
 
+The player’s goal is to collect all collectibles on the map and then escape by choosing the shortest possible route.
+
+Use W, A, S, and D keys to move the character. At every move, the current number of movements will be displayed in the shell.
+
 ## Instructions
 
 1. Clone the repository:
