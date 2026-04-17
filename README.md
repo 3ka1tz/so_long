@@ -8,7 +8,7 @@ This project is a small 2D game. Its purpose is to have you work with textures, 
 
 The player’s goal is to collect all collectibles on the map and then escape by choosing the shortest possible route.
 
-Use W, A, S, and D keys to move the character. At every move, the current number of movements will be displayed in the shell.
+Use WASD or arrow keys to move the character. At every move, the current number of movements will be displayed in the shell.
 
 ## Instructions
 
