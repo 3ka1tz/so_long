@@ -7,22 +7,22 @@ void	load_textures(t_data *game)
 	res = 100;
 	game->_0 = mlx_xpm_file_to_image(game->mlx, "textures/0.xpm", &res, &res);
 	if (!game->_0)
-		write(2, "Error!\nUnable to load ground texture.\n", 39);
+		write(2, "Error\nUnable to load ground texture.\n", 39);
 	game->_1 = mlx_xpm_file_to_image(game->mlx, "textures/1.xpm", &res, &res);
 	if (!game->_1)
-		write(2, "Error!\nUnable to load wall texture.\n", 37);
+		write(2, "Error\nUnable to load wall texture.\n", 37);
 	game->c = mlx_xpm_file_to_image(game->mlx, "textures/C.xpm", &res, &res);
 	if (!game->c)
-		write(2, "Error!\nUnable to load collectible texture.\n", 44);
+		write(2, "Error\nUnable to load collectible texture.\n", 44);
 	game->e = mlx_xpm_file_to_image(game->mlx, "textures/E.xpm", &res, &res);
 	if (!game->e)
-		write(2, "Error!\nUnable to load exit texture.\n", 37);
+		write(2, "Error\nUnable to load exit texture.\n", 37);
 	game->p = mlx_xpm_file_to_image(game->mlx, "textures/P.xpm", &res, &res);
 	if (!game->p)
-		write(2, "Error!\nUnable to load player texture.\n", 39);
+		write(2, "Error\nUnable to load player texture.\n", 39);
 	game->s = mlx_xpm_file_to_image(game->mlx, "textures/S.xpm", &res, &res);
 	if (!game->s)
-		write(2, "Error!\nUnable to load player above exit texture.\n", 50);
+		write(2, "Error\nUnable to load player above exit texture.\n", 50);
 	if (!game->_0 || !game->_1 || !game->c || !game->e || !game->p || !game->s)
 		exit_game(game);
 }

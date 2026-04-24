@@ -8,7 +8,7 @@ static int	is_map_playable(t_data *game)
 		game->array_playable[game->row + 1][game->col] == '1')
 	{
 		free_game_data(game);
-		return (write(2, "Error!\nMap is not playable.\n", 29), 0);
+		return (write(2, "Error\nMap is not playable.\n", 29), 0);
 	}
 	return (1);
 }
@@ -95,7 +95,7 @@ int	is_map_winnable(t_data *game)
 		{
 			if (game->array_playable[game->row][game->col] == 'E' || \
 				game->array_playable[game->row][game->col] == 'C')
-				return (write(1, "Error!\nMap is not winnable.\n", 29), 0);
+				return (write(1, "Error\nMap is not winnable.\n", 29), 0);
 			game->col++;
 		}
 		game->row++;

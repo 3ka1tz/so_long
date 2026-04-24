@@ -1,8 +1,15 @@
 #include "../include/so_long.h"
 
-static int	is_file_ber(const char *filename)
+static int	is_argc_valid(int argc)
 {
-	int	i;
+	if (argc != 2)
+		return (write(2, "Error\nUsage: ./so_long <map_file>\n", 34), 0);
+	return (1);
+}
+
+static int	has_ber_extension(const char *filename)
+{
+	size_t	i;
 
 	i = ft_strlen(filename);
 	if (filename[i - 4] == '.' && \
@@ -10,21 +17,10 @@ static int	is_file_ber(const char *filename)
 		filename[i - 2] == 'e' && \
 		filename[i - 1] == 'r')
 		return (1);
-	return (write(2, "Error!\nMap file must have .ber extension.\n", 43), 0);
+	return (write(2, "Error\nInvalid map extension (.ber required)\n", 44), 0);
 }
 
-static int	is_filename_valid(const char *filename)
+int	validate_args(int argc, char **argv)
 {
-	int	filename_length;
-
-	filename_length = ft_strlen(filename);
-	if (filename_length >= 5 && filename[filename_length - 5] != '/')
-		return (1);
-	return (write(2, "Error!\nMap file must have a valid name.\n", 41), 0);
-}
-
-void	validate_map_file(char **argv)
-{
-	if (!is_file_ber(argv[1]) || !is_filename_valid(argv[1]))
-		exit(0);
+	return (!is_argc_valid(argc) || !has_ber_extension(argv[1]));
 }
