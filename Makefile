@@ -1,44 +1,57 @@
 NAME = so_long
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g
+SRC_DIR = src
+OBJ_DIR = obj
+
+SRCS = $(SRC_DIR)/main.c \
+      $(SRC_DIR)/argument_validation.c \
+      $(SRC_DIR)/exit_game.c \
+      $(SRC_DIR)/map_validation.c \
+      $(SRC_DIR)/playable_area.c \
+      $(SRC_DIR)/player_movement.c \
+      $(SRC_DIR)/texture_rendering.c \
+      $(SRC_DIR)/utils.c \
+      $(SRC_DIR)/ft_split.c \
+      $(SRC_DIR)/ft_strlen.c \
+      $(SRC_DIR)/ft_strndup.c
+
+FT_PRINTF_DIR = ft_printf
+FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
+
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -L minilibx-linux -lmlx -lX11 -lXext -lm
 
 MLX = minilibx-linux/libmlx_Linux.a
 
-SRC = $(wildcard src/*.c)
-OBJ = $(SRC:.c=.o)
-
-GREEN = \033[32m
-YELLOW = \033[33m
-RESET = \033[0m
-
 all: $(NAME)
-	@echo "${GREEN}$(NAME) has been successfully built.${RESET}"
-	@$(MAKE) -s usage
 
-$(NAME): mlx $(OBJ)
-	@$(CC) $(CFLAGS) -o $@ $(OBJ) $(LDFLAGS) $(MLX)
+$(NAME): mlx $(FT_PRINTF) $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS) $(FT_PRINTF) $(MLX)
 
-src/%.o: src/%.c
-	@$(CC) $(CFLAGS) -c -o $@ $<
+$(FT_PRINTF):
+	$(MAKE) -s -C $(FT_PRINTF_DIR)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 mlx:
-	@$(MAKE) -s -C minilibx-linux > /dev/null 2>&1
-	@echo "${GREEN}minilibx-linux has been successfully built.${RESET}"
+	$(MAKE) -s -C minilibx-linux
 
 clean:
-	@rm -f $(OBJ)
-	@$(MAKE) -s -C minilibx-linux clean > /dev/null 2>&1
-	@echo "${GREEN}Cleaned up object files and dependencies.${RESET}"
+	rm -rf $(OBJ_DIR)
+	$(MAKE) -C minilibx-linux clean
+	$(MAKE) -C $(FT_PRINTF_DIR) clean
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "${GREEN}Fully cleaned up all build artifacts.${RESET}"
+	rm -f $(NAME)
+      $(MAKE) -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
 
-usage:
-	@echo "${YELLOW}Usage: ./so_long map.ber${RESET}"
-
-.PHONY: all clean fclean re mlx usage
+.PHONY: all clean fclean re
