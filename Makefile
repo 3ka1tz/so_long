@@ -4,16 +4,16 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRCS = $(SRC_DIR)/main.c \
-      $(SRC_DIR)/argument_validation.c \
-      $(SRC_DIR)/exit_game.c \
-      $(SRC_DIR)/map_validation.c \
-      $(SRC_DIR)/playable_area.c \
-      $(SRC_DIR)/player_movement.c \
-      $(SRC_DIR)/texture_rendering.c \
-      $(SRC_DIR)/utils.c \
-      $(SRC_DIR)/ft_split.c \
-      $(SRC_DIR)/ft_strlen.c \
-      $(SRC_DIR)/ft_strndup.c
+       $(SRC_DIR)/argument_validation.c \
+       $(SRC_DIR)/exit_game.c \
+       $(SRC_DIR)/map_validation.c \
+       $(SRC_DIR)/playable_area.c \
+       $(SRC_DIR)/player_movement.c \
+       $(SRC_DIR)/texture_rendering.c \
+       $(SRC_DIR)/utils.c \
+       $(SRC_DIR)/ft_split.c \
+       $(SRC_DIR)/ft_strlen.c \
+       $(SRC_DIR)/ft_strndup.c
 
 FT_PRINTF_DIR = ft_printf
 FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
@@ -50,7 +50,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-      $(MAKE) -C $(FT_PRINTF_DIR) fclean
+	$(MAKE) -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
 
