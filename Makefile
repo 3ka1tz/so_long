@@ -13,6 +13,7 @@ SRCS = $(SRC_DIR)/main.c \
        $(SRC_DIR)/utils.c \
        $(SRC_DIR)/ft_split.c \
        $(SRC_DIR)/ft_strlen.c \
+	   $(SRC_DIR)/ft_strncmp.c \
        $(SRC_DIR)/ft_strndup.c
 
 FT_PRINTF_DIR = ft_printf

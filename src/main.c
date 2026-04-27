@@ -50,16 +50,15 @@ int	main(int argc, char **argv)
 {
 	t_data	game;
 
-	if (argc != 2)
-		return (write(2, "Error\nUsage: ./so_long <map_file>\n", 34), 1);
-	validate_map_file(argv);
+	if (!are_args_valid(argc, argv))
+		return (1);
 	game.fd = open(argv[1], O_RDONLY);
 	if (game.fd == -1)
-		return (write(2, "Error\nUnable to open file.\n", 29), -1);
+		return (write(2, "Error!\nUnable to open file.\n", 29), -1);
 	game.string_length = count_bytes_from_fd(game.fd);
 	game.string = malloc(game.string_length + 1);
 	if (!game.string)
-		return (write(2, "Error\nMemory allocation failed.\n", 34), -1);
+		return (write(2, "Error!\nMemory allocation failed.\n", 34), -1);
 	close(game.fd);
 	game.fd = open(argv[1], O_RDONLY);
 	read(game.fd, game.string, game.string_length);

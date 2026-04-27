@@ -6,6 +6,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# include "../ft_printf/include/ft_printf.h"
 # include "../minilibx-linux/mlx.h"
 
 # define ESC 65307
@@ -49,21 +50,11 @@ typedef struct s_data
 }	t_data;
 
 int		ft_strlen(const char *s);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strndup(const char *s, size_t n);
 char	**ft_split(const char *s, char c);
 
-int		ft_printnbr_recursive(unsigned int n);
-int		ft_printnbr(int n);
-int		ft_printunbr(unsigned int n);
-int		ft_printhex(unsigned int n, int lower_upper);
-int		ft_printptr(void *ptr);
-int		ft_printchar(char c);
-int		ft_printstr(char *str);
-int		ft_handle_specifier(const char **format, va_list args);
-int		ft_process_format(const char *format, va_list args);
-int		ft_printf(const char *format, ...);
-
-void	validate_map_file(char **argv);
+int		are_args_valid(int argc, char **argv);
 void	check_top_bottom_rows(t_data *game);
 void	check_left_right_columns(t_data *game);
 int		is_map_valid(t_data *game);
