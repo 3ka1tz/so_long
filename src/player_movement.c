@@ -1,5 +1,7 @@
 #include "../include/so_long.h"
 
+# include <X11/keysym.h>
+
 static void	update_player_position(t_data *game, int y, int x)
 {
 	game->player_y = y;
@@ -44,21 +46,21 @@ static void	move_player(t_data *game, int y, int x)
 
 int	keys(int keycode, t_data *game)
 {
-	if (keycode == ESC)
+	if (keycode == XK_Escape)
 	{
 		write(1, "Successfully exited after pressing ESC.\n", 41);
 		exit_game(game);
 	}
-	if ((keycode == W || keycode == UP)
+	if ((keycode == XK_w || keycode == XK_Up)
 		&& game->array_playable[game->player_y - 1][game->player_x] != '1')
 		move_player(game, game->player_y - 1, game->player_x);
-	if ((keycode == A || keycode == LEFT)
+	if ((keycode == XK_a || keycode == XK_Left)
 		&& game->array_playable[game->player_y][game->player_x - 1] != '1')
 		move_player(game, game->player_y, game->player_x - 1);
-	if ((keycode == S || keycode == DOWN)
+	if ((keycode == XK_s || keycode == XK_Down)
 		&& game->array_playable[game->player_y + 1][game->player_x] != '1')
 		move_player(game, game->player_y + 1, game->player_x);
-	if ((keycode == D || keycode == RIGHT)
+	if ((keycode == XK_d || keycode == XK_Right)
 		&& game->array_playable[game->player_y][game->player_x + 1] != '1')
 		move_player(game, game->player_y, game->player_x + 1);
 	return (0);

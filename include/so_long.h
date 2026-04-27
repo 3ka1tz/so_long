@@ -9,16 +9,6 @@
 # include "../ft_printf/include/ft_printf.h"
 # include "../minilibx-linux/mlx.h"
 
-# define ESC 65307
-# define W 119
-# define A 97
-# define S 115
-# define D 100
-# define UP 65362
-# define LEFT 65361
-# define DOWN 65364
-# define RIGHT 65363
-
 typedef struct s_data
 {
 	void	*mlx;
