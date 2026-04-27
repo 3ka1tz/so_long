@@ -2,7 +2,6 @@
 # define SO_LONG_H
 
 # include <fcntl.h>
-# include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
 
