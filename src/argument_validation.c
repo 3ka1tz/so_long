@@ -17,7 +17,7 @@ static int	has_ber_extension(const char *filename)
 	len = ft_strlen(filename);
 	if (len < 5 || ft_strncmp(&filename[len - 4], ".ber", 4) != 0)
 	{
-		write(2, "Error!\nInvalid map extension (.ber required)\n", 44);
+		write(2, "Error\nInvalid map extension (.ber required)\n", 44);
 		return (0);
 	}
 	return (1);
