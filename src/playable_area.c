@@ -1,5 +1,8 @@
 #include "../include/so_long.h"
 
+#include <stdlib.h>
+#include <unistd.h>
+
 static int	is_map_playable(t_data *game)
 {
 	if (game->array_playable[game->row][game->col - 1] == '1' && \

@@ -1,5 +1,7 @@
 #include "../include/so_long.h"
 
+#include <stdlib.h>
+
 static void	destroy_mlx_resources(t_data *game)
 {
 	if (game->_0)

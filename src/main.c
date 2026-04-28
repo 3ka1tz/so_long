@@ -1,6 +1,8 @@
 #include "../include/so_long.h"
 
+#include <fcntl.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #define BUFFER_SIZE 4096
 

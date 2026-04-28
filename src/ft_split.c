@@ -1,5 +1,7 @@
 #include "../include/so_long.h"
 
+#include <stdlib.h>
+
 size_t	count_words(const char *s, char c)
 {
 	size_t	word_count;

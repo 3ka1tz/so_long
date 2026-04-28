@@ -1,5 +1,7 @@
 #include "../include/so_long.h"
 
+#include <unistd.h>
+
 static int	is_argc_valid(int argc)
 {
 	if (argc != 2)

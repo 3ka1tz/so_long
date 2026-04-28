@@ -1,5 +1,7 @@
 #include "../include/so_long.h"
 
+#include <unistd.h>
+
 static int	are_chars_valid(t_data *game)
 {
 	size_t	i;

@@ -1,5 +1,7 @@
 #include "../include/so_long.h"
 
+#include <unistd.h>
+
 void	load_textures(t_data *game)
 {
 	int	res;

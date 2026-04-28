@@ -1,5 +1,7 @@
 #include "../include/so_long.h"
 
+#include <unistd.h>
+
 static int	get_map_height(t_data *game)
 {
 	int	i;

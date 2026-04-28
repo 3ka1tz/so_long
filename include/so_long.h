@@ -1,9 +1,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
+# include <stddef.h>
 
 # include "../libs/ft_printf/include/ft_printf.h"
 # include "../libs/minilibx-linux/mlx.h"
