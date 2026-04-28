@@ -2,11 +2,9 @@
 
 static int	are_chars_valid(t_data *game)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (!game->map_str[i])
-		return (write(2, "Error\nMap is empty.\n", 20), 0);
 	while (game->map_str[i])
 	{
 		if (game->map_str[i] != '0' && \
@@ -15,10 +13,13 @@ static int	are_chars_valid(t_data *game)
 			game->map_str[i] != 'E' && \
 			game->map_str[i] != 'P' && \
 			game->map_str[i] != '\n')
-			return (write(2, "Error\nMap has invalid characters.\n", 34), 0);
+		{
+			write(2, "Error\nMap has invalid characters\n", 33);
+			return (0);
+		}
 		if (game->map_str[i] == '\n' && game->map_str[i + 1] == '\n')
 		{
-			write(2, "Error\nMap has consecutive linefeeds.\n", 37);
+			write(2, "Error\nMap has consecutive linefeeds\n", 36);
 			return (0);
 		}
 		i++;
@@ -28,7 +29,7 @@ static int	are_chars_valid(t_data *game)
 
 static int	are_enough_elements(t_data *game)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (game->map_str[i])
@@ -42,21 +43,21 @@ static int	are_enough_elements(t_data *game)
 		i++;
 	}
 	if (game->c_count < 1)
-		return (write(2, "Error\nNo C in map.\n", 19), 0);
+		return (write(2, "Error\nNo C in map\n", 18), 0);
 	if (game->e_count == 0)
-		return (write(2, "Error\nNo E in map.\n", 19), 0);
+		return (write(2, "Error\nNo E in map\n", 18), 0);
 	if (game->e_count > 1)
-		return (write(2, "Error\nMultiple E in map.\n", 25), 0);
+		return (write(2, "Error\nMultiple E in map\n", 24), 0);
 	if (game->p_count <= 0)
-		return (write(2, "Error\nNo P in map.\n", 19), 0);
+		return (write(2, "Error\nNo P in map\n", 18), 0);
 	if (game->p_count > 1)
-		return (write(2, "Error\nMultiple P in map.\n", 25), 0);
+		return (write(2, "Error\nMultiple P in map\n", 24), 0);
 	return (1);
 }
 
 static int	is_map_rectangular(t_data *game)
 {
-	int	i;
+	size_t	i;
 
 	game->width = ft_strlen(game->array[0]);
 	i = 1;
