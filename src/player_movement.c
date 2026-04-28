@@ -1,6 +1,6 @@
 #include "../include/so_long.h"
 
-# include <X11/keysym.h>
+#include <X11/keysym.h>
 
 static void	update_player_position(t_data *game, int y, int x)
 {

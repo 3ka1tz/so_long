@@ -27,8 +27,8 @@ void	free_game_data(t_data *game)
 {
 	int	i;
 
-	if (game->string)
-		free(game->string);
+	if (game->map_str)
+		free(game->map_str);
 	i = 0;
 	while (game->array[i])
 	{

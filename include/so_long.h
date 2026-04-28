@@ -12,7 +12,7 @@ typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
-	char	*string;
+	char	*map_str;
 	char	**array;
 	char	**array_playable;
 	int		fd;

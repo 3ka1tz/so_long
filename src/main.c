@@ -1,4 +1,5 @@
 #include "../include/so_long.h"
+#include <stdlib.h>
 
 static int	count_bytes_from_fd(int fd)
 {
@@ -46,27 +47,40 @@ static int	init_game(t_data *game)
 	return (0);
 }
 
+static char	*read_map(const char *file)
+{
+	int		fd;
+	size_t	size;
+	char	*str;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (write(2, "Error\nUnable to open input map file\n", 36), NULL);
+	size = count_bytes_from_fd(fd);
+	close(fd);
+	if (size == 0)
+		return (write(2, "Error\nEmpty map\n", 16), NULL);
+	str = malloc(size + 1);
+	if (!str)
+		return (write(2, "Error\nMap string allocation failed\n", 35), NULL);
+	fd = open(file, O_RDONLY);
+	read(fd, str, size);
+	str[size] = '\0';
+	close(fd);
+	return (str);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	game;
-	size_t	map_size;
 
 	if (!are_args_valid(argc, argv))
 		return (1);
-	game.fd = open(argv[1], O_RDONLY);
-	if (game.fd == -1)
-		return (write(2, "Error\nUnable to open file.\n", 27), -1);
-	map_size = count_bytes_from_fd(game.fd);
-	game.string = malloc(map_size + 1);
-	if (!game.string)
-		return (write(2, "Error\nMemory allocation failed.\n", 32), -1);
-	close(game.fd);
-	game.fd = open(argv[1], O_RDONLY);
-	read(game.fd, game.string, map_size);
-	close(game.fd);
-	game.string[map_size] = '\0';
-	game.array = ft_split(game.string, '\n');
-	game.array_playable = ft_split(game.string, '\n');
+	game.map_str = read_map(argv[1]);
+	if (!game.map_str)
+		return (1);
+	game.array = ft_split(game.map_str, '\n');
+	game.array_playable = ft_split(game.map_str, '\n');
 	init_struct(&game);
 	if (is_map_valid(&game))
 		init_game(&game);

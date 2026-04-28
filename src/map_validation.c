@@ -5,18 +5,18 @@ static int	are_chars_valid(t_data *game)
 	int	i;
 
 	i = 0;
-	if (!game->string[i])
+	if (!game->map_str[i])
 		return (write(2, "Error\nMap is empty.\n", 20), 0);
-	while (game->string[i])
+	while (game->map_str[i])
 	{
-		if (game->string[i] != '0' && \
-			game->string[i] != '1' && \
-			game->string[i] != 'C' && \
-			game->string[i] != 'E' && \
-			game->string[i] != 'P' && \
-			game->string[i] != '\n')
+		if (game->map_str[i] != '0' && \
+			game->map_str[i] != '1' && \
+			game->map_str[i] != 'C' && \
+			game->map_str[i] != 'E' && \
+			game->map_str[i] != 'P' && \
+			game->map_str[i] != '\n')
 			return (write(2, "Error\nMap has invalid characters.\n", 34), 0);
-		if (game->string[i] == '\n' && game->string[i + 1] == '\n')
+		if (game->map_str[i] == '\n' && game->map_str[i + 1] == '\n')
 		{
 			write(2, "Error\nMap has consecutive linefeeds.\n", 37);
 			return (0);
@@ -31,13 +31,13 @@ static int	are_enough_elements(t_data *game)
 	int	i;
 
 	i = 0;
-	while (game->string[i])
+	while (game->map_str[i])
 	{
-		if (game->string[i] == 'C')
+		if (game->map_str[i] == 'C')
 			game->c_count++;
-		if (game->string[i] == 'E')
+		if (game->map_str[i] == 'E')
 			game->e_count++;
-		if (game->string[i] == 'P')
+		if (game->map_str[i] == 'P')
 			game->p_count++;
 		i++;
 	}
