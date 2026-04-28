@@ -15,7 +15,6 @@ typedef struct s_data
 	char	*map_str;
 	char	**array;
 	char	**array_playable;
-	int		fd;
 	int		c_count;
 	int		e_count;
 	int		p_count;

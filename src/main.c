@@ -60,7 +60,7 @@ static int	init_game(t_data *game)
 
 	x = game->width;
 	y = game->height;
-	write(1, "Collect every coin and reach the exit.\n", 40);
+	write(1, "Collect every coin and reach the exit\n", 38);
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, x * 100, y * 100, "so_long");
 	load_textures(game);

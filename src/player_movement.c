@@ -9,29 +9,29 @@ static void	update_player_position(t_data *game, int y, int x)
 	game->step_count++;
 }
 
-static void	redraw_player(t_data *game, int old_position[2], int y, int x)
+static void	redraw_player(t_data *game, int old_y, int old_x, int y, int x)
 {
-	draw_tile(game, old_position[0], old_position[1]);
+	draw_tile(game, old_y, old_x);
 	draw_tile(game, y, x);
 }
 
 static void	move_player(t_data *game, int y, int x)
 {
-	int	old_position[2];
+	int	old_y;
+	int	old_x;
 
-	old_position[0] = game->player_y;
-	old_position[1] = game->player_x;
-	if (game->array[y][x] == 'C')
+	old_y = game->player_y;
+	old_x = game->player_x;
+	if (game->array[y][x] == '0' || game->array[y][x] == 'C')
 	{
+		if (game->array[y][x] == 'C')
+			game->c_count--;
 		game->array[y][x] = 'P';
-		game->c_count--;
 	}
-	else if (game->array[y][x] == '0')
-		game->array[y][x] = 'P';
-	if (game->array[old_position[0]][old_position[1]] == 'S')
-		game->array[old_position[0]][old_position[1]] = 'E';
+	if (game->array[old_y][old_x] == 'S')
+		game->array[old_y][old_x] = 'E';
 	else
-		game->array[old_position[0]][old_position[1]] = '0';
+		game->array[old_y][old_x] = '0';
 	if (game->c_count != 0 && game->array[y][x] == 'E')
 		game->array[y][x] = 'S';
 	else if (game->c_count == 0 && game->array[y][x] == 'E')
@@ -40,7 +40,7 @@ static void	move_player(t_data *game, int y, int x)
 		exit_game(game);
 	}
 	update_player_position(game, y, x);
-	redraw_player(game, old_position, y, x);
+	redraw_player(game, old_y, old_x, y, x);
 	ft_printf("Step Count: %d\n", game->step_count);
 }
 
