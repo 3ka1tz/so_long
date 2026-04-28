@@ -5,8 +5,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# include "../ft_printf/include/ft_printf.h"
-# include "../minilibx-linux/mlx.h"
+# include "../libs/ft_printf/include/ft_printf.h"
+# include "../libs/minilibx-linux/mlx.h"
 
 typedef struct s_data
 {

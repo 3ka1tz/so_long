@@ -16,16 +16,16 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/ft_strncmp.c \
        $(SRC_DIR)/ft_strndup.c
 
-FT_PRINTF_DIR = ft_printf
+FT_PRINTF_DIR = libs/ft_printf
 FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -L minilibx-linux -lmlx -lX11 -lXext -lm
+LDFLAGS = -L libs/minilibx-linux -lmlx -lX11 -lXext -lm
 
-MLX = minilibx-linux/libmlx_Linux.a
+MLX = libs/minilibx-linux/libmlx_Linux.a
 
 all: $(NAME)
 
@@ -42,11 +42,11 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 mlx:
-	$(MAKE) -s -C minilibx-linux
+	$(MAKE) -s -C libs/minilibx-linux
 
 clean:
 	rm -rf $(OBJ_DIR)
-	$(MAKE) -C minilibx-linux clean
+	$(MAKE) -C libs/minilibx-linux clean
 	$(MAKE) -C $(FT_PRINTF_DIR) clean
 
 fclean: clean
