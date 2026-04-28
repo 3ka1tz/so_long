@@ -49,21 +49,22 @@ static int	init_game(t_data *game)
 int	main(int argc, char **argv)
 {
 	t_data	game;
+	size_t	map_size;
 
 	if (!are_args_valid(argc, argv))
 		return (1);
 	game.fd = open(argv[1], O_RDONLY);
 	if (game.fd == -1)
 		return (write(2, "Error\nUnable to open file.\n", 27), -1);
-	game.string_length = count_bytes_from_fd(game.fd);
-	game.string = malloc(game.string_length + 1);
+	map_size = count_bytes_from_fd(game.fd);
+	game.string = malloc(map_size + 1);
 	if (!game.string)
 		return (write(2, "Error\nMemory allocation failed.\n", 32), -1);
 	close(game.fd);
 	game.fd = open(argv[1], O_RDONLY);
-	read(game.fd, game.string, game.string_length);
+	read(game.fd, game.string, map_size);
 	close(game.fd);
-	game.string[game.string_length] = '\0';
+	game.string[map_size] = '\0';
 	game.array = ft_split(game.string, '\n');
 	game.array_playable = ft_split(game.string, '\n');
 	init_struct(&game);
