@@ -1,6 +1,6 @@
 # So Long
 
-This project has been created as part of the 42 curriculum by [elopez-u](https://profile.intra.42.fr/users/elopez-u).
+*This project has been created as part of the 42 curriculum by [elopez-u](https://profile.intra.42.fr/users/elopez-u).*
 
 ## Description
 
