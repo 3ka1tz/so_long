@@ -1,23 +1,47 @@
 #include "../include/so_long.h"
+
 #include <stdlib.h>
 
-static int	count_bytes_from_fd(int fd)
-{
-	char	buffer[1];
-	int		bytes_read;
-	int		total_bytes;
+#define BUFFER_SIZE 4096
 
-	total_bytes = 0;
+static size_t	get_file_size(int fd)
+{
+	size_t	total;
+	ssize_t	tmp;
+	char	buffer[BUFFER_SIZE];
+
+	total = 0;
 	while (1)
 	{
-		bytes_read = read(fd, buffer, 1);
-		if (bytes_read == -1)
-			return (total_bytes);
-		if (bytes_read == 0)
+		tmp = read(fd, buffer, BUFFER_SIZE);
+		if (tmp <= 0)
 			break ;
-		total_bytes += bytes_read;
+		total += (size_t)tmp;
 	}
-	return (total_bytes);
+	return (total);
+}
+
+static char	*read_map(const char *file)
+{
+	int		fd;
+	size_t	size;
+	char	*str;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (write(2, "Error\nUnable to open input map file\n", 36), NULL);
+	size = get_file_size(fd);
+	close(fd);
+	if (size == 0)
+		return (write(2, "Error\nEmpty map\n", 16), NULL);
+	str = malloc(size + 1);
+	if (!str)
+		return (write(2, "Error\nMap string allocation failed\n", 35), NULL);
+	fd = open(file, O_RDONLY);
+	read(fd, str, size);
+	str[size] = '\0';
+	close(fd);
+	return (str);
 }
 
 static void	init_struct(t_data *game)
@@ -45,29 +69,6 @@ static int	init_game(t_data *game)
 	mlx_hook(game->win, 17, 0, exit_game, game);
 	mlx_loop(game->mlx);
 	return (0);
-}
-
-static char	*read_map(const char *file)
-{
-	int		fd;
-	size_t	size;
-	char	*str;
-
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (write(2, "Error\nUnable to open input map file\n", 36), NULL);
-	size = count_bytes_from_fd(fd);
-	close(fd);
-	if (size == 0)
-		return (write(2, "Error\nEmpty map\n", 16), NULL);
-	str = malloc(size + 1);
-	if (!str)
-		return (write(2, "Error\nMap string allocation failed\n", 35), NULL);
-	fd = open(file, O_RDONLY);
-	read(fd, str, size);
-	str[size] = '\0';
-	close(fd);
-	return (str);
 }
 
 int	main(int argc, char **argv)
