@@ -7,12 +7,7 @@ static void	update_player_position(t_data *game, int y, int x)
 	game->player_y = y;
 	game->player_x = x;
 	game->step_count++;
-}
-
-static void	redraw_player(t_data *game, int old_y, int old_x, int y, int x)
-{
-	draw_tile(game, old_y, old_x);
-	draw_tile(game, y, x);
+	ft_printf("Step Count: %i\n", game->step_count);
 }
 
 static void	move_player(t_data *game, int y, int x)
@@ -36,19 +31,19 @@ static void	move_player(t_data *game, int y, int x)
 		game->array[y][x] = 'S';
 	else if (game->c_count == 0 && game->array[y][x] == 'E')
 	{
-		write(1, "Congratulations, you've finished the game!\n", 44);
+		write(1, "Congratulations! You've finished the game\n", 42);
 		exit_game(game);
 	}
 	update_player_position(game, y, x);
-	redraw_player(game, old_y, old_x, y, x);
-	ft_printf("Step Count: %d\n", game->step_count);
+	draw_tile(game, old_y, old_x);
+	draw_tile(game, y, x);
 }
 
 int	keys(int keycode, t_data *game)
 {
 	if (keycode == XK_Escape)
 	{
-		write(1, "Successfully exited after pressing ESC.\n", 41);
+		write(1, "Game closed: ESC pressed\n", 25);
 		exit_game(game);
 	}
 	if ((keycode == XK_w || keycode == XK_Up)
