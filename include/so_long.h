@@ -38,6 +38,7 @@ int		ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strndup(const char *s, size_t n);
 char	**ft_split(const char *s, char c);
+void	ft_putstr_fd(char *s, int fd);
 
 int		are_args_valid(int argc, char **argv);
 void	check_top_bottom_rows(t_data *game);

@@ -14,7 +14,8 @@ SRCS = $(SRC_DIR)/main.c \
        $(SRC_DIR)/ft_split.c \
        $(SRC_DIR)/ft_strlen.c \
 	   $(SRC_DIR)/ft_strncmp.c \
-       $(SRC_DIR)/ft_strndup.c
+       $(SRC_DIR)/ft_strndup.c \
+	   $(SRC_DIR)/ft_putstr_fd.c
 
 FT_PRINTF_DIR = libs/ft_printf
 FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
